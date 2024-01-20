@@ -1,5 +1,7 @@
 # 🍔 Mongo Burgers 🍔
 
+<img src="https://i.imgur.com/kRrZgqu.jpg" width="50%">
+
 ## Overview
 
 You want to help your friend create an app for their burger shop, where customers can order their burgers online either have them picked up or delivered. Your friend is a culinary visionary and envisions that burgers can be made with any protein (beef, chicken, turkey, ostrich, tofu, emu, buffalo, elk, etc...), cheese is optional (only 1 slice of American cheese allowed) and the burger can have any number of toppings ( ketchup, mustard, guacamole, Worcestershire sauce, french fries, hot fudge, mayonnaise, pickled beets, mango, sriracha, onions, ramen, pickles, capers, relish, fried banana and with peanut butter, olives, tabasco, kimchi, maple syrup, mushrooms, fried green tomatoes, etc.).
