@@ -1,6 +1,6 @@
 # 🍔 Mongo Burgers 🍔
 
-<img src="https://i.imgur.com/kRrZgqu.jpg" width="50%">
+<img src="https://i.imgur.com/kRrZgqu.jpg" width="70%">
 
 ## Overview
 
