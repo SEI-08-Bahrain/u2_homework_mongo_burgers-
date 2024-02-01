@@ -45,14 +45,22 @@ db.burgers.drop()
 // Bonus
 //recreate your burgers database and your burger collection
 //copy paste your insert burgers from above to reseed your database
-
+db.burgers.insertMany([
+  {patty: "beef", cheese: true, toppings: ["tomato", "pickels", "mayo", "ketchup", "mustard"]},
+  {patty: "beef", chees: false, toppings: ["tomato", "pickels", "mayo", "ketchup", "mustard"]},
+  {patty: "beef", cheese: true, toppings: ["mayo"]},
+  {patty: "chicken", cheese: false, toppings: []},
+  {patty: "chicken", cheese: true, toppings: ["tomato", "lettuce", "mayo"]}
+  ])
 // Change the name of the key cheese to 'pumpkinSpice'
-
+db.burgers.updateMany({cheese: {$exists: true}}, {$rename: {"cheese": "pumpkinSpice"}})
 // find all the burgers with ketchup (or another topping you used at least once)
-
+db.burgers.find({toppings: {$all: ["mayo"]}})
 // find all the burgers with pickles (or a topping you used more than once) and remove the pickles
-
+db.burgers.updateMany({toppings: {$all: ["tomato"]}}, {$pull: {toppings: ["tomato"]}})
 // add a topping of 'eggs' to all the beef burgers
+db.burgers.updateMany({patty: "beef"}, {$push: {toppings: "eggs"}})
 //note since this db is 'reset' there should be no veggie burgers, all beef burgers should still be intact
 
 //Add a price to each burger, start with $5.00 for each burger 
+db.burgers.updateMany({}, {$set: {price: "$5.00"}})
