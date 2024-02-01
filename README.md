@@ -22,6 +22,8 @@ The orders should have a
 - whether or not there will be cheese
 - a list of toppings
 
+
+
 ## Activity
 
 - Work through the command prompts listed in the `answers.js` file in the mongo shell to CRUD data.
