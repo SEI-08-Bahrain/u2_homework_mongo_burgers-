@@ -7,49 +7,54 @@ db.burger.insertMany([
   { protein: "ostrich", cheese: false, topping: "ketchup" },
   { protein: "tofu", cheese: true, topping: "olives" },
   { protein: "buffalo", cheese: false, topping: "pickles" },
+  { protein: "beef", cheese: true, topping: "sriracha" },
+  { protein: "beef", cheese: false, topping: "mayonnaise" },
+  { protein: "beef", cheese: true, topping: "hot fudge" },
+  { protein: "tofu", cheese: true, topping: "pickles" },
+  { protein: "buffalo", cheese: false, topping: "mustard" },
 ])
 
 // find all the burgers
 db.burger.find({})
 
 // show just the protein of each burger
-db.burger.distinct('protein')
+db.burger.find({},{ protein: 1 , _id: 0})
 
 // show just the toppings of each burger
-db.burger.distinct('toppings')
+db.burger.find({},{ topping: 1 , _id: 0})
 
 // show everything but not the cheese
-db.burger.find({} , {protein: 1, topping: 1})
+db.burger.find({}, { protein: 1, topping: 1 })
 
 // find all the burgers with beef
-db.burger.find({protein: 'beef'})
+db.burger.find({ protein: "beef" })
 
 // find all the burgers that are not beef
-db.burger.find({protein: {$ne: 'beef'}})
+db.burger.find({ protein: { $ne: "beef" } })
 
 // find the first burger with cheese
-db.burger.findOne({protein: 'beef'})
+db.burger.findOne({ cheese: true })
 
 // find one and update the first burger with cheese to have a property of 'double cheese'
-db.burger.findOneAndUpdate({cheese: true}, {$set: {cheese: 'double cheese'}})
+db.burger.updateOne(
+  { cheese: true },
+  { $set: { cheese: "double cheese" } }
+)
 
 // find the burger you updated to have double cheese
-db.burger.findOne({cheese: 'double cheese'})
+db.burger.findOne({ cheese: "double cheese" })
 
 // find and update all the beef burgers to be 'veggie'
-db.burger.findOneAndUpdate({protein: 'beef'}, {$set: {protein: 'veggie'}})
-
+db.burger.updateMany({ protein: "beef" }, { $set: { protein: "veggie" } })
 
 // delete one of your veggie burgers
 // WRONG - dELETES ALL : db.burger.remove({meat: 'veggie'})
-db.burger.deleteOne({protein: 'veggie'})
-
+db.burger.deleteOne({ protein: "veggie" })
 
 // drop the collection
 //Expected Output
 //true
 db.burger.drop()
-
 
 // drop the database
 //Expected Output
@@ -58,7 +63,6 @@ db.burger.drop()
 //   "ok": 1
 // }
 db.dropDatabase()
-
 
 //
 // Bonus
